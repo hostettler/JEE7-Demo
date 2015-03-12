@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glassfish-ejb-jar PUBLIC "-//GlassFish.org//DTD GlassFish Application Server 3.1 EJB 3.1//EN" "http://glassfish.org/dtds/glassfish-ejb-jar_3_1-1.dtd">
+<glassfish-ejb-jar>
+	<security-role-mapping>
+		<role-name>manager</role-name>
+		<group-name>manager</group-name>
+	</security-role-mapping>
+	<security-role-mapping>
+		<role-name>user</role-name>
+		<group-name>user</group-name>
+	</security-role-mapping>
+	<enterprise-beans />
+</glassfish-ejb-jar>

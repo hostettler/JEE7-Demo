@@ -1,0 +1,106 @@
+--CREATE DATABASE  IF NOT EXISTS `students_db` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `STUDENTS_DB`;
+-- MySQL dump 10.13  Distrib 5.5.16, for osx10.5 (i386)
+--
+-- Host: localhost    Database: STUDENTS_DB
+-- ------------------------------------------------------
+-- Server version	5.5.20
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+
+DROP TABLE IF EXISTS `GRADES`;
+DROP TABLE IF EXISTS `PICTURES`;
+DROP TABLE IF EXISTS `STUDENTS`;
+DROP TABLE IF EXISTS `BADGESS`;
+
+
+--
+-- Table structure for table `STUDENTS`
+--
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `STUDENTS` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `LAST_NAME` varchar(35) NOT NULL,
+  `FIRST_NAME` varchar(35) NOT NULL,
+  `BIRTH_DATE` varchar(35) NOT NULL,
+  `PHONE_NUMBER` varchar(14) NOT NULL,
+  `NUMBER` VARCHAR(255), 
+  `CITY` VARCHAR(255), 
+  `STREET` VARCHAR(255), 
+  `POSTAL_CODE` VARCHAR(255), 
+  PRIMARY KEY (`ID`),
+  UNIQUE KEY `UNIQUE_INDEX` (`LAST_NAME`,`FIRST_NAME`,`BIRTH_DATE`)
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+
+
+--
+-- Table structure for table `pictures`
+--
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `PICTURES` (
+  `ID` int (11) NOT NULL AUTO_INCREMENT,
+  `STUDENT_ID` int(11),
+  `PICTURE` longblob,
+  PRIMARY KEY (`ID`),
+  CONSTRAINT `FK_PICTURES_STUDENT_ID` FOREIGN KEY (`STUDENT_ID`) REFERENCES `STUDENTS` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `GRADES`
+--
+
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `GRADES` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `DISCIPLINE` varchar(35) NOT NULL,
+  `GRADE` int(11),
+  `STUDENT_ID` int(11),
+  PRIMARY KEY (`ID`),
+  KEY `fk_GRADES_STUDENTS` (`STUDENT_ID`),
+  CONSTRAINT `fk_GRADES_STUDENTS` FOREIGN KEY (`STUDENT_ID`) REFERENCES `STUDENTS` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `BADGES` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `SECURITY_LEVEL` int(11),
+  `STUDENT_ID` int(11),
+  PRIMARY KEY (`ID`),
+  KEY `fk_BADGES_STUDENTS` (`STUDENT_ID`),
+  CONSTRAINT `fk_BADGE_STUDENTS` FOREIGN KEY (`STUDENT_ID`) REFERENCES `STUDENTS` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+
+
+
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2012-02-28 12:58:46

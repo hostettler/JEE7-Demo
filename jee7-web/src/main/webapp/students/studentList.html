@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html ng-app="studentApp">
+<head>
+<link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css" />
+<link rel="styleSheet" href="../ng-grid/ui-grid.min.css" />
+<link rel="styleSheet"
+	href="../form-validation/dist/ng-fab-validation.css" />
+
+<script src="../jquery/jquery-1.11.2.min.js"></script>
+<script src="../bootstrap/js/bootstrap.js"></script>
+
+<script src="../angular/angular.js"></script>
+<script src="../angular/angular-animate.js"></script>
+<script src="../angular/angular-messages.js"></script>
+<script src="../angular/angular-touch.js"></script>
+<script src="../angular/ui-bootstrap-tpls.js"></script>
+<script src="../angular/angular-resource.js"></script>
+
+<script src="../ng-grid/ui-grid.js"></script>
+<script src="../form-validation/dist/ng-fab-form.js"></script>
+
+<script src="studentApp.js"></script>
+<script src="studentControllers.js"></script>
+<script src="studentServices.js"></script>
+</head>
+
+<body>
+
+	<div class="container">
+		<div class="page-header">
+			<h3>JEE 7 Student Edition</h3>
+		</div>
+		<div class="row">
+			<div ng-controller="studentGridController as stdctrl">
+				<div id="grid1" ui-grid="gridDescription" ui-grid-selection
+					class="grid"></div>
+			</div>
+
+			<br />
+
+			<div class="container" ng-controller="studentFormController as form">
+				<div class="row">
+					<div class="col-md-6">
+						<form role="form" class="form-horizontal">
+
+							<div class="form-group">
+								<label class="control-label col-md-3">Id:</label>
+								<div class="col-md-9">
+									<input class="form-control" name="id" type="text"
+										ng-model="student.id" disabled="true"/>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label class="control-label col-md-3">First Name:</label>
+								<div class="col-md-9">
+									<input class="form-control" name="firstName" ng-minlength="2"
+										ng-maxlength="30" required type="text"
+										ng-model="student.firstName" />
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label class="control-label col-md-3">Last Name:</label>
+								<div class="col-md-9">
+									<input class="form-control" name="lastName" ng-minlength="2"
+										ng-maxlength="30" type="text" required
+										ng-model="student.lastName" />
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label class="control-label col-md-3">Birth date:</label>
+
+								<div class="form-group col-md-9">
+									<div class="col-md-11">
+										<input type="text" class="form-control"
+											datepicker-popup="{{format}}" is-open="opened"
+											min-date="minDate" max-date="'2015-06-22'"
+											datepicker-options="dateOptions" ng-model="student.birthDate"
+											date-disabled="disabled(date, mode)" ng-required="true"
+											required close-text="Close" />
+									</div>
+									<div class="col-md-1">
+										<button type="button" class="btn btn-default"
+											ng-click="open($event)">
+											<i class="glyphicon glyphicon-calendar"></i>
+										</button>
+									</div>
+								</div>
+
+							</div>
+							<div class="form-group">
+								<div class="col-md-3">
+								</div>
+								<div class="col-md-9">
+									<button class="pull-left btn"
+										ng-click="form.reset()">Reset</button>	
+									<button class="pull-right btn btn-primary"
+										ng-click="form.save()">Save</button>
+								</div>
+						</form>
+					</div>
+					<div class="col-md-6"></div>
+				</div>
+			</div>
+		</div>
+</body>
+</html>
+
