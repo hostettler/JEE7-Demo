@@ -9,6 +9,7 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
+import javax.validation.Valid;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -76,7 +77,7 @@ public class StudentServiceFacade implements Serializable {
 	
 	@POST
 	@Consumes({ "application/json" })
-	public void save(StudentDTO studentDTO) {
+	public void save(@Valid StudentDTO studentDTO) {
 		Student student = mapper.map(studentDTO, Student.class);
 		logger.info("save a given student");
 		studentService.update(student);
@@ -84,7 +85,7 @@ public class StudentServiceFacade implements Serializable {
 	
 	@PUT
 	@Consumes({ "application/json" })
-	public void create(StudentDTO studentDTO) {
+	public void create(@Valid StudentDTO studentDTO) {
 		logger.info("create a given student");
 		Student student = mapper.map(studentDTO, Student.class);
 		student.setAddress(new Address());

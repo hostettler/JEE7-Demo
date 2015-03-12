@@ -1,9 +1,17 @@
 var controllers = angular.module('studentControllers', [ 'ngTouch', 'ui.grid', 'ui.grid.selection',
 		'studentServices' ]);
 
+
 controllers.factory('SharedData', function () {
 	return {student : {firstName:'', lastName:'', birthDate : ''}};
 });
+
+
+controllers.controller('tabsController', [ '$scope', '$log',
+     function($scope, $log) {
+	
+}]);
+
 
 controllers.controller('studentFormController', [ '$scope', 'SharedData', '$log', 'ngFabForm','studentService', '$filter', '$rootScope',
                                                   function($scope, SharedData, $log, ngFabForm, studentService, $filter,$rootScope) {
