@@ -6,6 +6,6 @@
 <title>Demo</title>
 <!-- This empty jsp redirects to the faces container --> 
 <meta http-equiv="Refresh"
-   content="0;url=${pageContext.request.contextPath}/facade/studentService/all"> 
+   content="0;url=${pageContext.request.contextPath}/students/studentList.html"> 
 </head>
 </html>
