@@ -97,7 +97,7 @@ public class StudentServiceImpl implements StudentService {
 
 	@Override
 	@RolesAllowed({ "user" })
-	public final Integer[] getDistribution(@Min(value = 1) final int n) {
+	public Integer[] getDistribution(@Min(value = 1) final int n) {
 		numberOfAccess++;
 		Integer[] grades = new Integer[n];
 

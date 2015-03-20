@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.ejb.Local;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 import ch.demo.dom.Student;
 
@@ -37,7 +39,7 @@ public interface StudentService extends Serializable {
 	 * @param student
 	 *            to add
 	 */
-	void add(Student student);
+	void add(@NotNull  Student student);
 
 	/**
 	 * @return an array that contains the distribution of the grades. It
@@ -45,7 +47,7 @@ public interface StudentService extends Serializable {
 	 * @param n
 	 *            : number of parts
 	 */
-	Integer[] getDistribution(final int n);
+	Integer[] getDistribution(@Min(value = 1) final int n);
 
 	/**
 	 * @param id
@@ -70,5 +72,5 @@ public interface StudentService extends Serializable {
 	 */
 	Long getStatistics();
 
-	void update(Student student);
+	void update(@NotNull Student student);
 }

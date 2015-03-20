@@ -2,6 +2,7 @@ package ch.demo.helpers;
 
 import java.io.Serializable;
 
+import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Produces;
 import javax.enterprise.inject.spi.Bean;
 import javax.enterprise.inject.spi.InjectionPoint;
@@ -15,6 +16,7 @@ import org.slf4j.LoggerFactory;
  * @author hostettler
  *
  */
+@ApplicationScoped
 public class LoggerProducer  implements Serializable {
 
     /** The serial-id.  */
