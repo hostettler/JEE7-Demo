@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.annotation.security.RolesAllowed;
 import javax.ejb.Stateless;
-import javax.enterprise.inject.Instance;
 import javax.interceptor.Interceptors;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -14,9 +13,10 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 import ch.demo.business.interceptors.PerformanceInterceptor;
-import ch.demo.dom.Address;
 import ch.demo.dom.Student;
 
 /**
@@ -40,8 +40,6 @@ public class StudentServiceImpl implements StudentService {
 	@PersistenceContext
 	private EntityManager entityManager;
 
-	Instance<Address> b;
-	
 	/** The number of times, the service has been invoked. */
 	private Long numberOfAccess = 0l;
 
@@ -72,7 +70,7 @@ public class StudentServiceImpl implements StudentService {
 	 */
 	@Override
 	@RolesAllowed({ "manager" })
-	public void add(final Student student) {
+	public void add(@NotNull final Student student) {
 		numberOfAccess++;
 		entityManager.persist(student);
 	}
@@ -83,7 +81,7 @@ public class StudentServiceImpl implements StudentService {
 	 */
 	@Override
 	@RolesAllowed({ "manager" })
-	public void update(final Student student) {
+	public void update(@NotNull final Student student) {
 		numberOfAccess++;
 		Student currentStudent = getStudentById(student.getId());
 		currentStudent.setFirstName(student.getFirstName());
@@ -99,7 +97,7 @@ public class StudentServiceImpl implements StudentService {
 
 	@Override
 	@RolesAllowed({ "user" })
-	public final Integer[] getDistribution(final int n) {
+	public final Integer[] getDistribution(@Min(value = 1) final int n) {
 		numberOfAccess++;
 		Integer[] grades = new Integer[n];
 
