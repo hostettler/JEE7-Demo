@@ -3,3 +3,4 @@ target
 .metatdata
 .apt_generated
 .settings
+.classpath
