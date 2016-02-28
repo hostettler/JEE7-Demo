@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0"
+	xmlns="http://java.sun.com/xml/ns/persistence">
+	<persistence-unit name="JEE6DemoPersistence"
+		transaction-type="JTA">
+
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+
+		<jta-data-source>StudentsDS</jta-data-source>
+
+		<class>ch.demo.dom.Grade</class>
+
+		<properties>
+			<property name="hibernate.hbm2ddl.auto" value="update" />
+			<property name="hibernate.show_sql" value="true" />			
+		</properties>
+	</persistence-unit>
+</persistence>

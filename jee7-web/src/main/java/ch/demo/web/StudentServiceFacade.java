@@ -3,11 +3,16 @@
  */
 package ch.demo.web;
 
+import java.io.IOException;
 import java.io.Serializable;
+import java.security.Principal;
 import java.util.List;
 
+import javax.annotation.Resource;
 import javax.ejb.EJB;
-import javax.enterprise.context.RequestScoped;
+import javax.ejb.LocalBean;
+import javax.ejb.SessionContext;
+import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.validation.Valid;
 import javax.ws.rs.Consumes;
@@ -18,23 +23,23 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
-import ma.glasnost.orika.MapperFacade;
-import ma.glasnost.orika.MapperFactory;
-import ma.glasnost.orika.impl.DefaultMapperFactory;
-
 import org.slf4j.Logger;
 
 import ch.demo.business.service.StudentService;
 import ch.demo.dom.Address;
 import ch.demo.dom.PhoneNumber;
 import ch.demo.dom.Student;
+import ma.glasnost.orika.MapperFacade;
+import ma.glasnost.orika.MapperFactory;
+import ma.glasnost.orika.impl.DefaultMapperFactory;
 
 /**
  * @author hostettler
  * 
  */
-@RequestScoped
 @Path("/studentService")
+@Stateless
+@LocalBean
 public class StudentServiceFacade implements Serializable {
 
 	private static final int GRADE_DISTRIBUTION = 10;
@@ -48,7 +53,16 @@ public class StudentServiceFacade implements Serializable {
 	@Inject
 	private Logger logger;
 	
+	@Inject
+	private StudentEventBus bus;
+	
 	private MapperFacade mapper;
+	
+	@Resource
+	SessionContext ctx;
+
+	@Resource
+	private Principal principal;
 	
 	public StudentServiceFacade() {
 		MapperFactory factory = new DefaultMapperFactory.Builder().build();
@@ -77,10 +91,11 @@ public class StudentServiceFacade implements Serializable {
 	
 	@POST
 	@Consumes({ "application/json" })
-	public void save(@Valid StudentDTO studentDTO) {
+	public void save(@Valid StudentDTO studentDTO) throws IOException {
 		Student student = mapper.map(studentDTO, Student.class);
 		logger.info("save a given student");
 		studentService.update(student);
+		bus.alertOtherPeers(ctx.getCallerPrincipal(), studentDTO);
 	}
 	
 	@PUT

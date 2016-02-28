@@ -11,6 +11,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 
+import com.owlike.genson.annotation.JsonDateFormat;
+
 @XmlRootElement(name = "student")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(namespace = "http://ch.demo.app")
@@ -34,6 +36,7 @@ public class StudentDTO implements Serializable {
     /** The student birth date. */
     @NotNull
     @XmlSchemaType(name="date")
+    @JsonDateFormat("yyyy-MM-dd")
     private Date birthDate;
 
 	/**

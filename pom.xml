@@ -8,12 +8,16 @@
 	<name>jee7-demo</name>
 
 	<modules>
-		<module>./jee7-ejb</module>
-		<module>./jee7-web</module>
-		<module>./jee7-ear</module>
+		<module>./jee7-utils</module>
+		<module>./jee7-grade-service</module>
+		<module>./jee7-class-service</module>
+		<module>./jee7-students-service</module>
+		<!-- <module>./jee7-search-service</module> -->
+		<!-- <module>./jee7-statics</module> -->
+		<!-- <module>./jee7-web</module> -->
 	</modules>
-	
-    <build>
+
+	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -104,7 +108,7 @@
 							<groupId>org.apache.maven.plugins</groupId>
 							<artifactId>maven-surefire-report-plugin</artifactId>
 							<version>2.6</version>
-							<configuration>                           
+							<configuration>
 								<argLine>-Xmx1024m -XX:MaxPermSize=512m</argLine>
 								<aggregate>true</aggregate>
 							</configuration>
@@ -196,73 +200,48 @@
 
 	<dependencyManagement>
 		<dependencies>
-                        
+
+			<!-- Provided depencencies -->
 			<dependency>
 				<groupId>javax</groupId>
 				<artifactId>javaee-api</artifactId>
 				<version>7.0</version>
-				<scope>provided</scope>
-			</dependency>  
-            
+			</dependency>
+
 			<!-- Compile dependencies -->
 			<dependency>
 				<groupId>org.slf4j</groupId>
 				<artifactId>slf4j-api</artifactId>
 				<version>1.6.4</version>
-				<scope>compile</scope>
 			</dependency>
 			<dependency>
-				<groupId>org.slf4j</groupId>
-				<artifactId>slf4j-jdk14</artifactId>
-				<version>1.6.4</version>
-				<scope>compile</scope>
+				<groupId>org.apache.logging.log4j</groupId>
+				<artifactId>log4j-slf4j-impl</artifactId>
+				<version>2.5</version>
 			</dependency>
-			<!-- Provided depencencies -->
+			<dependency>
+				<groupId>org.apache.logging.log4j</groupId>
+				<artifactId>log4j-api</artifactId>
+				<version>2.5</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.logging.log4j</groupId>
+				<artifactId>log4j-core</artifactId>
+				<version>2.5</version>
+			</dependency>
 
 			<dependency>
-				<groupId>org.eclipse.persistence</groupId>
-				<artifactId>eclipselink</artifactId>
-				<version>2.3.2</version>
-				<scope>provided</scope>
+				<groupId>org.mockito</groupId>
+				<artifactId>mockito-all</artifactId>
+				<version>1.9.5</version>
 			</dependency>
-
-
-			<!-- Test dependencies -->
 			<dependency>
 				<groupId>junit</groupId>
 				<artifactId>junit</artifactId>
 				<version>4.10</version>
-				<scope>test</scope>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
-
-	<dependencies>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-jdk14</artifactId>
-		</dependency>
-
-		<!-- Test dependencies -->
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-		</dependency>
-
-		<!-- Provided depencencies -->
-		<dependency>
-			<groupId>org.eclipse.persistence</groupId>
-			<artifactId>eclipselink</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>javax</groupId>
-			<artifactId>javaee-api</artifactId>
-		</dependency>
-	</dependencies>
 
 	<properties>
 		<compileSource>1.8</compileSource>
