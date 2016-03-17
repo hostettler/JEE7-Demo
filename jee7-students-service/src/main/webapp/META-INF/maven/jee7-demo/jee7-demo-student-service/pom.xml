@@ -11,7 +11,7 @@
 
 	<artifactId>jee7-demo-student-service</artifactId>
 	<packaging>war</packaging>
-	<name>Student Microservice</name>
+	<name>Student Microservice Romain.</name>
 	<description>This project handles the student micro-service layer of the JEE 7 demo</description>
 
 	<build>
