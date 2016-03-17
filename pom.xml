@@ -5,7 +5,7 @@
 	<artifactId>jee7-demo-pom</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
-	<name>jee7-demo</name>
+	<name>jee7-demo-romain</name>
 
 	<modules>
 		<module>./jee7-utils</module>
@@ -185,8 +185,6 @@
 			</plugin>
 		</plugins>
 	</build>
-
-
 
 	<repositories>
 		<repository>
