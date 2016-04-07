@@ -1,0 +1,65 @@
+<html>
+<head>
+<title>Angular 2 QuickStart</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="styles.css">
+
+<!-- 1. Load libraries -->
+<!-- IE required polyfills, in this exact order -->
+<script src="lib/js/es6-shim.min.js"></script>
+<script src="lib/js/system-polyfills.js"></script>
+<script src="lib/js/shims_for_IE.js"></script>
+
+<script src="lib/js/angular2-polyfills.js"></script>
+<script src="lib/js/system.src.js"></script>
+<script src="lib/js/Rx.js"></script>
+<script src="lib/js/angular2.dev.js"></script>
+
+<!-- ag-grid CSS -->
+<!-- In your build, you will probably want to include the css in your bundle. -->
+<!-- To do this you will use a CSS Loader. How to do this is not an ag-Grid -->
+<!-- problem, so I've not included how to do it here. For simplicity, and -->
+<!-- explicitness, the CSS files are loaded in directly here. -->
+<link href="lib/css/ag-grid.css"
+	rel="stylesheet" />
+<link href="lib/css/theme-fresh.css"
+	rel="stylesheet" />
+<link rel="stylesheet" href="lib/css/bootstrap.min.css">
+<!-- 2. Configure SystemJS -->
+<script>
+	System.config({
+		packages : {
+			app : {
+			format : 'register',
+				defaultExtension : 'js'	
+			},
+			lib : {
+				format : 'register',
+				defaultExtension : 'js'
+			},
+			'ag-grid-ng2' : {
+				defaultExtension : "js"
+			},
+			'ag-grid' : {
+				defaultExtension : "js"
+			}
+			/*,
+			'ag-grid-enterprise' : {
+				defaultExtension : "js"
+			}*/
+		},
+		map : {
+			'ag-grid-ng2' : 'lib/js/ag-grid-ng2',
+//			'ag-grid-enterprise' : 'lib/ag-grid-enterprise/',
+			'ag-grid' : 'lib/js/ag-grid'
+		}
+	});
+	System.import('app/main').then(null, console.error.bind(console));
+</script>
+</head>
+
+<!-- 3. Display the application -->
+<body>
+	<my-app>Loading...</my-app>
+</body>
+</html>

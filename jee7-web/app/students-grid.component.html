@@ -1,0 +1,20 @@
+<div class="container">
+	<div style="width: 800px;">
+
+		<div style="clear: both;"></div>
+
+		<div *ngIf="showGrid">
+			<ag-grid-ng2 
+				#agGrid
+				id="agGrid" 
+				style="width: 550; height: 350px;"
+				class="ag-fresh" [gridOptions]="gridOptions"
+				[columnDefs]="columnDefs" [showToolPanel]="showToolPanel"
+				[rowData]="students" enableColResize enableSorting groupHeaders
+				toolPanelSuppressGroups toolPanelSuppressValues debug rowHeight="22"
+				rowSelection="single"
+				(rowClicked)="onRowClicked($event)"> </ag-grid-ng2>
+		</div>
+
+	</div>
+</div>

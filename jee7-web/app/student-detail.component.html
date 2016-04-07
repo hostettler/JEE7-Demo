@@ -1,0 +1,43 @@
+<div class="container" *ngIf="student">
+	<form (ngSubmit)="onSubmit()" #heroForm="ngForm">
+
+		<div class="form-group">
+			<label>Id</label> <input type="text" disabled="disabled"
+				class="form-control" ngControl="id" [(ngModel)]="student.id">
+		</div>
+
+		<div class="form-group">
+			<label for="firstName">Firstname</label> <input type="text"
+				class="form-control" required ngControl="firstName"
+				[(ngModel)]="student.firstName" #firstName="ngForm">
+			<div [hidden]="firstName.valid || firstName.pristine"
+				class="alert alert-danger">Firstname is required</div>
+		</div>
+
+		<div class="form-group">
+			<label for="lastName">Lastname</label> <input type="text"
+				class="form-control" required ngControl="lastName"
+				[(ngModel)]="student.lastName" #lastName="ngForm">
+			<div [hidden]="lastName.valid || lastName.pristine"
+				class="alert alert-danger">Lastname is required</div>
+		</div>
+
+		<div class="form-group">
+			<label for="birthDate">Birthdate</label>
+			<my-date-picker [options]="myDatePickerOptions"
+				(dateChanged)="onDateChanged($event)" [selDate]="selectedDate"></my-date-picker>
+
+
+			<input  type="hidden" class="form-control" required
+				ngControl="birthDate" [(ngModel)]="student.birthDate"
+				#birthDate="ngForm"/>
+
+			<div [hidden]="birthDate.valid || birthDate.pristine"
+				class="alert alert-danger">birthdate is required</div>
+		</div>
+
+
+		<button type="submit" class="btn btn-default">Submit</button>
+
+	</form>
+</div>

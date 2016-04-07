@@ -1,0 +1,4 @@
+<div class="container">
+	<my-students-grid (onSelectEmitter)="onSelect($event)"></my-students-grid>
+	<student-detail (onRefreshEmitter)="onRefresh($event)" [student] ="selectedStudent"></student-detail>
+</div>
