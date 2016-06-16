@@ -21,7 +21,7 @@
 		<module>./jee7-class-service</module>
 		<module>./jee7-students-service</module>
 		<module>./jee7-search-service</module> 
-		<module>./jee7-statics</module> 
+		<!--<module>./jee7-statics</module> -->
 		<module>./jee7-web</module> 
 	</modules>
 
