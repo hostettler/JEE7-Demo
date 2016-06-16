@@ -8,9 +8,9 @@
 	<name>jee7-demo</name>
 	
 	<scm>
-		<connection>scm:git:git://github.com/hostettler/JEE7-Demo.git</connection>
+		<connection>scm:git:https://github.com/hostettler/JEE7-Demo.git</connection>
         	<developerConnection>scm:git:git@github.com:hostettler/JEE7-Demo.git</developerConnection>
-	    	<url>http://github.com/hostettler/JEE7-Demo</url>
+	    	<url>https://github.com/hostettler/JEE7-Demo</url>
 	</scm>
 
 
