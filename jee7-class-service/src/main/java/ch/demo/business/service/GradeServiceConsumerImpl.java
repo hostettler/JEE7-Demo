@@ -5,7 +5,7 @@ import java.util.List;
 public class GradeServiceConsumerImpl extends AbstractRestConsumer implements GradeServiceConsumer {
 	
 	public GradeServiceConsumerImpl() {
-		super("http://192.168.99.100:8080/jee7-demo-grade-service/rest/");
+		super("http://localhost:8080/jee7-demo-grade-service/rest/");
 	}
 
 	@Override
