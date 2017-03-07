@@ -60,6 +60,6 @@ public class StudentTest {
 		Date date = dateFormat.parse("2013-12-4");
 		
 		Student s1 = new Student("Steve", "Hostettler", date);
-		Assert.assertEquals("s1.toString()" , "Student [id=null, lastName=Steve, firstName=Hostettler, birthDate=Wed Dec 04 00:00:00 CET 2013, phoneNumber=null, grades=[]]", s1.toString());
+		Assert.assertTrue("s1.toString()" , s1.toString().contains("Student [id=null, lastName=Steve, firstName=Hostettler, birthDate=Wed Dec 04 00:00:00"));
 	}
 }

@@ -48,6 +48,6 @@ public class GradeTest {
 		Date date = dateFormat.parse("2013-12-4");
 		
 		Grade g1 = new Grade("0001", date, Discipline.BIOLOGY, 40);
-		Assert.assertEquals("g1.toString()" , "Grade [id=0, studentId=0001, date=Wed Dec 04 00:00:00 CET 2013, discipline=Biology]", g1.toString());
+		Assert.assertTrue("g1.toString()" ,  g1.toString().contains("Grade [id=0, studentId=0001, date=Wed Dec 04 00:00:00"));
 	}
 }
