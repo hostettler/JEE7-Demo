@@ -25,7 +25,7 @@ wait_for_server
 
 echo "=> Executing the commands"
 export STUDENTS_DS="java:/StudentsDS"
-export MYSQL_URI="jdbc:mysql://localhost:3306/STUDENTS_DB"
+export MYSQL_URI="jdbc:mysql://172.18.0.2:3306/STUDENTS_DB"
 export MYSQL_USER="root"
 export MYSQL_PWD="admin"
 
@@ -54,7 +54,7 @@ data-source add --name=StudentsDS --driver-name=mysql --jndi-name=$STUDENTS_DS -
 			       "hashAlgorithm" => "SHA-256", \
 			       "hashEncoding" => "base64"}}])
 
-/subsystem=logging/console-handler=CONSOLE:write-attribute(name=level,value=TRACE)
+#/subsystem=logging/console-handler=CONSOLE:write-attribute(name=level,value=TRACE)
 
 #/subsystem=logging/logger=org.jboss.security:write-attribute(name=level,value=TRACE)
 #Successfully saved resource [ ("subsystem" => "logging"), ("logger" => "org.jboss.security") ]

@@ -20,8 +20,8 @@ echo "MySql Successfully Started"
 
 # create the default database from the ADDed file.
 echo "Create the database."
-mysql --user=root --password=$MYSQL_ROOT_PASSWORD < /tmp/schema.sql
-mysql --user=root --password=$MYSQL_ROOT_PASSWORD < /tmp/init_data.sql
+mysql --user=root --password=$MYSQL_ROOT_PASSWORD < /docker-entrypoint-initdb.d/100_schema.sql
+mysql --user=root --password=$MYSQL_ROOT_PASSWORD < /docker-entrypoint-initdb.d/200_init_data.sql
 
 # Put MySqld in foreground so that the container does not stop at the end
 bash
