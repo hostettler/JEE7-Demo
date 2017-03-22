@@ -1,3 +1,8 @@
 #!/bin/bash
-docker network create --subnet=172.18.0.0/16 pinfosubnet
-docker run -d  --network pinfosubnet -p 8080:8080 -p 9990:9990 -p 8787:8787 --ip 172.18.0.3 -v //c/tmp/docker-deploy:/opt/jboss/wildfly/standalone/deployments/:rw jee7-demo-wildfly
+
+if [[ "$(docker images -q jee7-demo-wildfly 2> /dev/null)" == "" ]]; then
+ 	docker build -t jee7-demo-wildfly .
+	docker run --name mywildfly --link mysql:db -d  -p 8080:8080 -p 9990:9990 -p 8787:8787 -v /tmp/docker-deploy:/opt/jboss/wildfly/standalone/deployments/:rw jee7-demo-wildfly
+else
+	docker start mywildfly 
+fi
