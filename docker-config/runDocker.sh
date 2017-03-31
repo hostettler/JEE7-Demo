@@ -3,26 +3,14 @@
 # s/init/run/g if the image already exists
 
 # init the apach web server
-cd apache/
-./runWebServer.sh
-cd ..
+./apache/runWebServer.sh
 
 # init the database
-cd database/
-./runDatabase.sh
-cd ..
+./database/runDatabase.sh
 
 # init the webserver
-cd appserver/
-./runAppServer.sh
-cd ..
+./appserver/runAppServer.sh
 
 # init test webserver
-cd appserver_integration_tests
-./runAppServer.sh
-cd ..
+./appserver_integration_tests/runAppServer.sh
 
-#init the logstash
-cd logstash_elastic
-./runLogstash.sh
-cd ..

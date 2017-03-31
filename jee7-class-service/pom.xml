@@ -60,38 +60,32 @@
 		<dependency>
 			<groupId>org.jboss.arquillian</groupId>
 			<artifactId>arquillian-bom</artifactId>
-			<version>1.1.7.Final</version>
 			<scope>test</scope>
 			<type>pom</type>
 		</dependency>
 		<dependency>
 			<groupId>org.jboss.arquillian.junit</groupId>
 			<artifactId>arquillian-junit-container</artifactId>
-			<version>1.1.7.Final</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.wildfly</groupId>
+			<groupId>org.wildfly.arquillian</groupId>
 			<artifactId>wildfly-arquillian-container-remote</artifactId>
-			<version>8.1.0.Final</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.jboss.arquillian.core</groupId>
 			<artifactId>arquillian-core-api</artifactId>
-			<version>1.1.4.Final</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.jboss.arquillian.extension</groupId>
 			<artifactId>arquillian-jacoco</artifactId>
-			<version>1.0.0.Alpha8</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.jacoco</groupId>
 			<artifactId>org.jacoco.core</artifactId>
-			<version>0.7.4.201502262128</version>
 			<scope>test</scope>
 		</dependency>
 

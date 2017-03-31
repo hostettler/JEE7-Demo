@@ -13,7 +13,7 @@
 		</configuration>
 		<protocol type="Servlet 3.0">
 			<property name="host">localhost</property>
-			<property name="port">8070</property>
+			<property name="port">8080</property>
 		</protocol>
 	</container>
 
