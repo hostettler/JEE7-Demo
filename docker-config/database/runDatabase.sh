@@ -1,6 +1,6 @@
 #!/bin/bash
 
-docker network inspect jee7-network 1>/dev/null 2>/dev/nukk
+docker network inspect jee7-network 1>/dev/null 2>/dev/null
 if [ $? -ne 0 ]; then
 	docker network create --subnet 172.18.0.0/16   jee7-network
 fi
