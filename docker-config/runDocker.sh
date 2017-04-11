@@ -3,14 +3,22 @@
 # s/init/run/g if the image already exists
 
 # init the apach web server
-./apache/runWebServer.sh
+cd apache/
+./runWebServer.sh
+cd ../
 
 # init the database
-./database/runDatabase.sh
+cd database/
+./runDatabase.sh
+cd ../
 
 # init the webserver
-./appserver/runAppServer.sh
+cd appserver
+./runAppServer.sh
+cd ../
 
 # init test webserver
-./appserver_integration_tests/runAppServer.sh
+cd appserver_integration_tests/
+./runAppServer.sh
+cd ../
 
